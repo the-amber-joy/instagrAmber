@@ -7,7 +7,7 @@
         <figcaption>
           {{
             new Date(photo.taken_at)
-              | dateFormat("dddd, MMMM DD, YYYY h:mm a", dateFormatConfig)
+              | dateFormat("dddd, MMMM DD, YYYY h:mma", dateFormatConfig)
           }}
           {{ photo.caption }}<br />
         </figcaption>

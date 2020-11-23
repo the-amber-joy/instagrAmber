@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <InstaModo msg="Insta-Quasi-Clone-Modo" :photos="photos" />
+    <InstaModo msg="InstagrAmber" :photos="photos" />
   </div>
 </template>
 
