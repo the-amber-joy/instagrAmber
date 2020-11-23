@@ -11,7 +11,8 @@
     "@vuejs-community/vue-filter-date-format": "^1.6.3",
     "core-js": "^3.6.5",
     "lodash": "^4.17.20",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-masonry-wall": "^0.3.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

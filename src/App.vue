@@ -1,27 +1,29 @@
 <template>
   <div id="app">
-    <InstaModo :title="title" :photos="photos" :allMedia="allMedia" />
+    <InstaModo :title="title" :items="items" />
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import VueFilterDateFormat from "@vuejs-community/vue-filter-date-format";
+import VueMasonryWall from "vue-masonry-wall";
 import map from "lodash/map";
 import sortBy from "lodash/sortBy";
 import concat from "lodash/concat";
 import * as metadata from "@/assets/media.json";
 import InstaModo from "./components/InstaModo.vue";
 
+Vue.use(VueMasonryWall);
 Vue.use(VueFilterDateFormat);
 
-const photos = map(metadata.photos, (photo) => {
+const photos = map(metadata.photos, photo => {
   return {
     format: "photo",
     ...photo
   };
 });
-const videos = map(metadata.videos, (video) => {
+const videos = map(metadata.videos, video => {
   return {
     format: "video",
     ...video
@@ -36,8 +38,7 @@ export default {
   },
   data: () => ({
     title: "instagrAmber",
-    photos,
-    allMedia,
+    items: allMedia,
     dateFormatConfig: {
       dayOfWeekNames: [
         "Sunday",
@@ -77,7 +78,6 @@ export default {
         "Nov",
         "Dec"
       ],
-      // Timezone offset, in minutes (0 - UTC, 180 - Russia, undefined - current)
       timezone: -360
     }
   })
