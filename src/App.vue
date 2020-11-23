@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
     <InstaModo msg="Insta-Quasi-Clone-Modo" :photos="photos" />
   </div>
 </template>
@@ -62,7 +61,7 @@ export default {
         "Dec",
       ],
       // Timezone offset, in minutes (0 - UTC, 180 - Russia, undefined - current)
-      timezone: 0,
+      timezone: -360,
     },
   }),
 };
