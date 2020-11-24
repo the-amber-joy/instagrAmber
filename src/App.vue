@@ -11,17 +11,18 @@ import map from "lodash/map";
 import sortBy from "lodash/sortBy";
 import concat from "lodash/concat";
 import * as metadata from "@/assets/media.json";
+import dateFormatConfig from "@/assets/dateFormatConfig.json";
 import InstaModo from "./components/InstaModo.vue";
 
 Vue.use(VueFilterDateFormat);
 
-const photos = map(metadata.photos, (photo) => {
+const photos = map(metadata.photos, photo => {
   return {
     format: "photo",
     ...photo
   };
 });
-const videos = map(metadata.videos, (video) => {
+const videos = map(metadata.videos, video => {
   return {
     format: "video",
     ...video
@@ -38,48 +39,7 @@ export default {
     title: "instagrAmber",
     photos,
     allMedia,
-    dateFormatConfig: {
-      dayOfWeekNames: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
-      dayOfWeekNamesShort: ["Su", "Mo", "Tu", "We", "Tr", "Fr", "Sa"],
-      monthNames: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ],
-      monthNamesShort: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ],
-      // Timezone offset, in minutes (0 - UTC, 180 - Russia, undefined - current)
-      timezone: -360
-    }
+    dateFormatConfig
   })
 };
 </script>
