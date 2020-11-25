@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <InstaModo :title="title" :photos="photos" :allMedia="allMedia" />
+    <Gallery :title="title" :allMedia="allMedia" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import sortBy from "lodash/sortBy";
 import concat from "lodash/concat";
 import * as metadata from "@/assets/media.json";
 import dateFormatConfig from "@/assets/dateFormatConfig.json";
-import InstaModo from "./components/InstaModo.vue";
+import Gallery from "./components/Gallery.vue";
 
 Vue.use(VueFilterDateFormat);
 
@@ -33,11 +33,10 @@ const allMedia = sortBy(concat(photos, videos), "taken_at");
 export default {
   name: "App",
   components: {
-    InstaModo
+    Gallery
   },
   data: () => ({
     title: "instagrAmber",
-    photos,
     allMedia,
     dateFormatConfig
   })

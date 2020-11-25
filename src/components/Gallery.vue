@@ -5,8 +5,12 @@
       <div v-for="(item, index) in allMedia" v-bind:key="index">
         <template v-if="item.format === 'photo'">
           <figure>
-            <img v-bind:src="'/assets/' + item.path" />
+            <img
+              v-on:click="openDetail(item.format, item.index)"
+              v-bind:src="'/assets/' + item.path"
+            />
             <figcaption>
+              <span>&#x1F4F7;</span>
               {{
                 new Date(item.taken_at)
                   | dateFormat("dddd, MMMM DD,", dateFormatConfig)
@@ -22,10 +26,14 @@
         </template>
         <template v-else>
           <figure>
-            <video id="video" controls preload="metadata">
+            <video
+              v-on:click="openDetail(item.format, item.index)"
+              v-bind:src="'/assets/' + item.path"
+            >
               <source v-bind:src="'/assets/' + item.path" type="video/mp4" />
             </video>
             <figcaption>
+              <span>&#9654;&#65039;</span>
               {{
                 new Date(item.taken_at)
                   | dateFormat("dddd, MMMM DD,", dateFormatConfig)
@@ -51,6 +59,11 @@ export default {
     title: String,
     allMedia: Array,
     dateFormatConfig: Object
+  },
+  methods: {
+    openDetail: function(format, index) {
+      console.log(format, index);
+    }
   }
 };
 </script>
