@@ -24,7 +24,8 @@ const photos = map(metadata.photos, photo => {
     format: "photo",
     icon: "&#x1F4F7;",
     path: `${assetPath}/${photo.path}`,
-    isActive: false
+    isActive: false,
+    showModal: false
   };
 });
 const videos = map(metadata.videos, video => {
@@ -33,7 +34,8 @@ const videos = map(metadata.videos, video => {
     format: "video",
     icon: "&#9654;&#65039;",
     path: `${assetPath}/${video.path}`,
-    isActive: false
+    isActive: false,
+    showModal: false
   };
 });
 const allMedia = sortBy(concat(photos, videos), "taken_at").reverse();

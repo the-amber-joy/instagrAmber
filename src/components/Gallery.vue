@@ -9,14 +9,26 @@
       >
         <figure>
           <template v-if="item.format === 'photo'">
-            <img v-on:click="openItem(item)" v-bind:src="item.path" />
+            <img @click="openItem(item)" v-bind:src="item.path" />
           </template>
           <template v-else>
-            <video v-on:click="openItem(item)" v-bind:src="item.path">
+            <video @click="openItem(item)" v-bind:src="item.path">
               <source v-bind:src="'/assets/' + item.path" type="video/mp4" />
             </video>
           </template>
-          <figcaption v-on:click="toggleCaption($event, item)">
+          <figcaption @click="toggleCaption($event, item)">
+            <!-- <div id=""> -->
+            <DetailModal
+              :mediaFormat="item.format"
+              :mediaPath="item.path"
+              :mediaType="item.format"
+              :mediaCaption="item.caption"
+              :mediaDate="item.taken_at"
+              v-if="item.showModal"
+              @modalClose="item.showModal = false"
+            />
+            <!-- </div> -->
+
             <span v-html="item.icon"></span>
             {{
               new Date(item.taken_at)
@@ -38,8 +50,13 @@
 </template>
 
 <script>
+import DetailModal from "./DetailModal.vue";
+
 export default {
   name: "InstaModo",
+  components: {
+    DetailModal
+  },
   props: {
     title: String,
     allMedia: Array,
@@ -47,7 +64,8 @@ export default {
   },
   methods: {
     openItem: function(item) {
-      window.open(item.path);
+      // window.open(item.path);
+      item.showModal = true;
     },
     toggleCaption: function(event, item) {
       item.isActive = !item.isActive;
@@ -71,7 +89,7 @@ video {
 hr {
   position: absolute;
   bottom: 0;
-  width: 100%
+  width: 100%;
 }
 figcaption {
   display: -webkit-box;
