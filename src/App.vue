@@ -18,17 +18,23 @@ Vue.use(VueFilterDateFormat);
 
 const photos = map(metadata.photos, photo => {
   return {
+    ...photo,
     format: "photo",
-    ...photo
+    icon: "&#x1F4F7;",
+    path: "/assets/" + photo.path,
+    isActive: false
   };
 });
 const videos = map(metadata.videos, video => {
   return {
+    ...video,
     format: "video",
-    ...video
+    icon: "&#9654;&#65039;",
+    path: "/assets/" + video.path,
+    isActive: false
   };
 });
-const allMedia = sortBy(concat(photos, videos), "taken_at");
+const allMedia = sortBy(concat(photos, videos), "taken_at").reverse();
 
 export default {
   name: "App",
