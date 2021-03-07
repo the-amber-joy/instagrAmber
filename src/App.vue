@@ -16,12 +16,14 @@ import Gallery from "./components/Gallery.vue";
 
 Vue.use(VueFilterDateFormat);
 
+const assetPath = process.env.VUE_APP_ASSET_PATH;
+
 const photos = map(metadata.photos, photo => {
   return {
     ...photo,
     format: "photo",
     icon: "&#x1F4F7;",
-    path: "/assets/" + photo.path,
+    path: `${assetPath}/${photo.path}`,
     isActive: false
   };
 });
@@ -30,7 +32,7 @@ const videos = map(metadata.videos, video => {
     ...video,
     format: "video",
     icon: "&#9654;&#65039;",
-    path: "/assets/" + video.path,
+    path: `${assetPath}/${video.path}`,
     isActive: false
   };
 });

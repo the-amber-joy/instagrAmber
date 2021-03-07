@@ -10,6 +10,7 @@
   "dependencies": {
     "@vuejs-community/vue-filter-date-format": "^1.6.3",
     "core-js": "^3.6.5",
+    "dotenv": "^8.2.0",
     "lodash": "^4.17.20",
     "vue": "^2.6.11"
   },
